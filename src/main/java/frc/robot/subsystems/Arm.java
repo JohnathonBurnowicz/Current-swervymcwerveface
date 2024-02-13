@@ -9,9 +9,11 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMax.SoftLimitDirection;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxPIDController;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.GlobalVariables;
+
 
 public class Arm extends SubsystemBase {
  private CANSparkMax ArmMotor = new CANSparkMax(Constants.ArmCanId, MotorType.kBrushless);
@@ -45,8 +47,18 @@ public class Arm extends SubsystemBase {
 
   @Override
   public void periodic() {
-
+    SmartDashboard.putNumber("ArmAngle", getArmAngle());
+      // This method will be called once per scheduler run
     
+
+    //Logger.getInstance().recordOutput("Arm Angle", getLeftArmAngle());
+    //Logger.getInstance().recordOutput("Arm Extension", getExtensionPosition());
+
+    if(ArmAngle() < -4.5 && GlobalVariables.maxSpeed != 0.45) {
+      GlobalVariables.maxSpeed = 0.45;
+    }else if( ArmAngle() >= -4.5 && GlobalVariables.maxSpeed != Constants.DRIVE_SPEED){
+      GlobalVariables.maxSpeed = Constants.DRIVE_SPEED;
+    }
   }
 
   public void setArmPID(double angle) {
@@ -80,7 +92,12 @@ public void setArmEncoder() {
       return false;
     }
   }
-
+  public void setArmSpeed(double speed) {
+    ArmMotor.set(speed);
+  }
+  public void stopArm() {
+    ArmMotor.stopMotor();
+  }
   public void setArmAnglePID(double angle) {
     ArmPID.setReference(angle, CANSparkMax.ControlType.kPosition, 0);
   }
@@ -88,7 +105,9 @@ public void setArmEncoder() {
   public void setArmPIDValue(double pGain) {
     ArmPID.setP(pGain);
   }
-
+  public double getArmAngle() {
+    return ArmMotor.getEncoder().getPosition();
+  }
   //}
 
 

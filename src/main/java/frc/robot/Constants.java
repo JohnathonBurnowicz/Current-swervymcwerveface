@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import java.util.Collections;
+import java.util.List;
+
 import com.revrobotics.CANSparkMax.IdleMode;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
@@ -155,6 +158,11 @@ public static final int XBOXBUTTON_Y = 4;
   public static final double returnArmPGain = 0.07;
   public static final double MOVEPOS1 = 10.5;  
  public static final double DEFUALTPOS = 0.0;  
+ public static final double DRIVE_SPEED = 0.8;
 
-}
-
+  public static final List<Double> ARM_POSITIONS = Collections.unmodifiableList(List.of(
+    -7.0,
+    -20.0,
+    -25.5 //Original -27.0
+  ));
+} 
