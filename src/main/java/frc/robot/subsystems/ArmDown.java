@@ -24,7 +24,7 @@ public class ArmDown extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    armDown = GlobalVariables.upDownPosition;
+    armDown = GlobalVariables.downPosition;
     arm.setArmAnglePID(Constants.ARM_POSITIONS.get(armDown));
   }
 

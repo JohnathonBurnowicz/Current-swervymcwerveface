@@ -75,7 +75,7 @@ public class RobotContainer {
 
 
 driverJoystick.a().onTrue(new ArmDown(arm));         
-     
+driverJoystick.b().onTrue(new ArmUp(arm)); 
   }
  
   /**
