@@ -9,23 +9,23 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.GlobalVariables;
 
-public class ArmDown extends Command {
+public class ArmUp extends Command {
   
   
-  private final Arm arm;
+  private final Arm TheArm;
   private int armUp;
   /** Creates a new RotateArmToAngle. */
-  public ArmUp(Arm arm) {
-    this.arm = arm;
+  public ArmUp(Arm TheArm) {
+    this.TheArm = TheArm;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(arm);
+    addRequirements(TheArm);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     armUp = GlobalVariables.upPosition;
-    arm.setArmAnglePID(Constants.ARM_POSITIONS.get(armUp));
+    TheArm.setArmAnglePID(Constants.ARM_POSITIONS.get(armUp));
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,7 +39,7 @@ public class ArmDown extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(arm.isArmInPosition(Constants.ARM_POSITIONS.get(armUp))) {
+    if(TheArm.isArmInPosition(Constants.ARM_POSITIONS.get(armUp))) {
       return true;
     }else{
       return false;

@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ArmDown;
+import frc.robot.subsystems.ArmUp;
 import frc.robot.subsystems.DriveSubsystem;
 
 /*
@@ -75,7 +76,7 @@ public class RobotContainer {
 
 
 driverJoystick.a().onTrue(new ArmDown(arm));         
-driverJoystick.b().onTrue(new ArmUp(arm)); 
+driverJoystick.x().onTrue(new ArmUp(arm));
   }
  
   /**

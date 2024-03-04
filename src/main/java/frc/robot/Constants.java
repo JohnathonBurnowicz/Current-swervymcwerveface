@@ -152,17 +152,18 @@ public static final int XBOXBUTTON_Y = 4;
     public static final double kFreeSpeedRpm = 5676;
   }
 
-  public static final int ArmCanId = 18;
+  public static final int leftArmMotor = 19;
+  public static final int rightArmMotor = 20;
   public static final double ArmupPID = 20.0;
   public static final double placeArmPGain = 0.05;
   public static final double returnArmPGain = 0.07;
-  public static final double MOVEPOS1 = 10.5;  
+  public static final double MOVEPOS1 = 15.0;  
  public static final double MOVEPOS2 = -10.5;  
  public static final double DRIVE_SPEED = 0.8;
 
   public static final List<Double> ARM_POSITIONS = Collections.unmodifiableList(List.of(
-    -7.0,
-    -20.0,
-    -25.5 //Original -27.0
+    90.0, //Original -7
+    -90.0, //Origonal -10
+    -1.0 //Original -27.0
   ));
 } 
